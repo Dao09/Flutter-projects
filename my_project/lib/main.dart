@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,15 +11,57 @@ void main() {
   )); //can add MaterialApp()
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<   HomePage> {
+  var smText = "Change My Name";
+  TextEditingController te = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text("New App"),
       ),
-      body:
-          Center(child: Container(height: 100, width: 100, color: Colors.teal)),
+      body: Center(
+          child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Card(
+            child: Column(children: <Widget>[
+              Image.asset(
+                "assets/xy.jpg",
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                smText,
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextField(
+                    controller: te,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "Enter some text",
+                        labelText: "Name")),
+              )
+            ]),
+          ),
+        ),
+      )),
       drawer: Drawer(
           child: ListView(padding: EdgeInsets.all(0), children: <Widget>[
         UserAccountsDrawerHeader(
@@ -43,9 +87,17 @@ class HomePage extends StatelessWidget {
         )
       ])),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.edit),
+        onPressed: () {
+          smText = te.text;
+          setState(() {});
+        },
+        child: Icon(Icons.send),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
