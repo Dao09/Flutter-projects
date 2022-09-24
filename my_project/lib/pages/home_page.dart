@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/pages/login_pages.dart';
 import '../drawer.dart';
 import '../name_card.dart';
 import 'package:http/http.dart' as http; 
 import 'dart:convert';
+
+import '../utils/constants.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName ="/home";
@@ -42,7 +45,14 @@ var data;
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text("New App"),
+        actions: <Widget>[
+          IconButton(onPressed: () {
+            Constants.prefs?.setBool("LoggedIn",false);
+            Navigator.pushReplacementNamed(context,LoginPage.routeName);
+          }, icon: Icon(Icons.exit_to_app))
+        ]
       ),
+           
       body:data != null
       ?ListView.builder(
         itemBuilder: (context, index) {
