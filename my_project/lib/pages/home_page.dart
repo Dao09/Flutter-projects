@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class HomePage extends StatefulWidget {
+  static const String routeName ="/home";
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
