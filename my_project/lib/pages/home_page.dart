@@ -27,6 +27,10 @@ var data;
   fetchData()async {
     var res = await http.get(url);
     data = jsonDecode(res.body);
+    print(data);
+    setState(() {
+      
+    });
 
   }
 
@@ -37,13 +41,16 @@ var data;
       appBar: AppBar(
         title: Text("New App"),
       ),
-      body: Center(
-          child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: NameCardWid(smText: smText, te: te),
-        ),
-      )),
+      body:data != null
+      ?ListView.builder(
+        itemBuilder: (context, index) {
+        return ListTile(
+          title:Text(data[index]["title"]) ,
+          subtitle: Text("ID: ${data[index]["id"]}"),
+          leading: Image.network(data[index]["url"]),
+        );
+      } ):Center(
+          child:CircularProgressIndicator()),
       drawer: MyDrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
