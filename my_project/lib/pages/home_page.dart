@@ -40,6 +40,11 @@ var data;
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text("New App"),
+        actions: <Widget>[
+          IconButton(onPressed: () {
+            Navigator.pop(context);
+          }, icon: Icon(Icons.exit_to_app))
+        ]
       ),
       body:data != null
       ?ListView.builder(
