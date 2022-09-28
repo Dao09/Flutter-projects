@@ -1,0 +1,23 @@
+[
+    {
+        "name": "SRS",
+        "age":"24",
+        "height":"183",
+        "gender" : "male",
+        "hair_color":"black"
+    },
+       {
+        "name": "ORS",
+        "age":"21",
+        "height":"179",
+        "gender" : "female",
+        "hair_color":"black"
+    },
+       {
+        "name": "FRS",
+        "age":"27",
+        "height":"178",
+        "gender" : "male",
+        "hair_color":"brown"
+    }
+]
